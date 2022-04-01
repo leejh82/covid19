@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             clipper: MyClipper(),
             child: Container(
               padding: EdgeInsets.only(left: 40, top: 50, right: 20),
-              height: 350,
+              height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -174,39 +174,95 @@ class HomeScreen extends StatelessWidget {
                       ]
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(6),
-                            height: 25,
-                            width: 25,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: kInfectedColor.withOpacity(.26),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.transparent,
-                                border: Border.all(
-                                  color: kInfectedColor,
-                                  width: 2,
-                                )
-                              ),
-                          ),
-                          )
-                        ],
-                      )
+                      Counter(title: 'Infected', number: 1062, color: kInfectedColor,),
+                      Counter(title: 'Deathed', number: 43, color: kDeathColor,),
+                      Counter(title: 'Recovered', number: 15, color: kRecovercolor,),
                     ],
                   ),
-                )
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  children: [
+                    Text(
+                      'Spread of virus',
+                      style: kTitleTextstyle,
+                    ),
+                    Spacer(),
+                    Text('See details',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.all(20),
+                  height: 160,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Color(0xffe5e5e5),
+                      )),
+                  child: Image.asset('assets/images/map.png', fit: BoxFit.contain,),
+                ),
               ],
             ),
           ),
 
         ],
       ),
+    );
+  }
+}
+
+class Counter extends StatelessWidget {
+  final int number;
+  final String title;
+  final Color color;
+  const Counter({
+    Key? key, required this.number, required this.title, required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.all(6),
+          height: 25,
+          width: 25,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color.withOpacity(.26),
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.transparent,
+              border: Border.all(
+                color: color,
+                width: 2,
+              )
+            ),
+        ),
+        ),
+        SizedBox(height: 10,),
+        Text('$number',
+        style: TextStyle(
+          fontSize: 40,
+          color: color,
+        ),
+        ),
+        Text(title,
+          style: kSubTextStyle,
+        ),
+      ],
     );
   }
 }
