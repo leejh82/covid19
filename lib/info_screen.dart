@@ -54,10 +54,8 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-
               ),
             ),
-
             SizedBox(
               height: 20,
             ),
@@ -92,15 +90,29 @@ class InfoScreen extends StatelessWidget {
                                 )
                               ]),
                         ),
-                        Image.asset('assets/images/wear_mask.png')
-
+                        Image.asset('assets/images/wear_mask.png'),
+                        Positioned(
+                            left: 130,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              height: 136,
+                              width: MediaQuery.of(context).size.width-170,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('text'),
+                                  Text('text'),
+                                  
+                                ],
+                              ),
+                            ))
                       ],
                     ),
                   )
                 ],
               ),
             ),
-
           ],
         ),
       ),
@@ -116,7 +128,8 @@ class SymptomCard extends StatelessWidget {
   const SymptomCard({
     Key? key,
     required this.title,
-    required this.image, required this.isActive,
+    required this.image,
+    required this.isActive,
   }) : super(key: key);
 
   @override
@@ -128,16 +141,16 @@ class SymptomCard extends StatelessWidget {
             color: Colors.white,
             boxShadow: [
               isActive
-                  ?BoxShadow(
-                offset: Offset(0, 10),
-                blurRadius: 20,
-                color: kActiveShadowColor,
-              )
-                  :BoxShadow(
-                offset: Offset(0, 3),
-                blurRadius: 6,
-                color: kActiveShadowColor,
-              )
+                  ? BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 20,
+                      color: kActiveShadowColor,
+                    )
+                  : BoxShadow(
+                      offset: Offset(0, 3),
+                      blurRadius: 6,
+                      color: kActiveShadowColor,
+                    )
             ]),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
