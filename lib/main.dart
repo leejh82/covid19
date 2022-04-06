@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(bodyText1: TextStyle(color: kBodyTextColor)),
         fontFamily: 'Poppins',
       ),
-      home: InfoScreen(),
+      home: HomeScreen(),
     );
   }
 }
